@@ -1,24 +1,33 @@
 <?php
 // src/Contact.php
 
-class Contact {
+require_once 'Base.php';
+
+class Contact extends Base {
     private $conn;
     private $table = 'contacts';
 
     public $id;
-    public $name;
+    public $first_name;
+    public $last_name;
+    public $date_of_birth;
     public $email;
+    public $password;
     public $phone;
+    public $department;
     public $address;
 
     public function __construct($db) {
+        parent::__construct();
         $this->conn = $db;
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->table . " SET name=?, email=?, phone=?, address=?";
+        $query = "INSERT INTO " . $this->table . " SET first_name=?, last_name=?, date_of_birth=?, email=?, password=?, 
+            phone=?, department=?, address=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssss", $this->name, $this->email, $this->phone, $this->address);
+        $stmt->bind_param("ssssssss", $this->first_name, $this->last_name, $this->date_of_birth, $this->email, $this->password, 
+            $this->phone, $this->department, $this->address);
 
         return $stmt->execute();
     }
@@ -41,9 +50,11 @@ class Contact {
     }
 
     public function update() {
-        $query = "UPDATE " . $this->table . " SET name=?, email=?, phone=?, address=? WHERE id=?";
+        $query = "UPDATE " . $this->table . " SET first_name=?, last_name=?, date_of_birth=?, email=?, password=?, 
+            phone=?, department=?, address=? WHERE id=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssssi", $this->name, $this->email, $this->phone, $this->address, $this->id);
+        $stmt->bind_param("ssssssssi", $this->first_name, $this->last_name, $this->date_of_birth, $this->email, 
+            $this->password, $this->phone, $this->department, $this->address, $this->id);
 
         return $stmt->execute();
     }
@@ -54,5 +65,14 @@ class Contact {
         $stmt->bind_param("i", $this->id);
 
         return $stmt->execute();
+    }
+
+    public function login() {
+        $query = "SELECT * FROM " . $this->table . " WHERE email = ? AND password = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ss", $this->email, $this->password);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
     }
 }
