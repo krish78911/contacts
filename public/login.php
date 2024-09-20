@@ -22,11 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form method="POST" id="loginForm">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                placeholder="Enter your email" required>
+                            <div class="invalid-feedback">Please provide valid Email.</div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                            <input type="password" class="form-control" id="password" name="password" minlength="8"
+                                placeholder="Enter your password" required>
+                                <div class="invalid-feedback">Please provide password.</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
@@ -39,12 +43,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <div class="text-center col-sm-6 col-lg-6 col-xl-6">
-                <h1 class="display-4">Welcome to Employee Directory</h1>
-                <p class="lead">Here you can maintain your Employees details.</p>
+                <?php include 'about_intro.php'; ?>
             </div>
         </div>
         
     </div>
 </section>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
 
 <?php include 'footer.php'; ?>

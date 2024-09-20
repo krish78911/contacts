@@ -20,7 +20,14 @@ class ContactController extends Base {
         $this->contact->password = $data['password'];
         $this->contact->phone = $data['phone'];
         $this->contact->department = $data['department'];
+        $this->contact->job_type = $data['job_type'];
         $this->contact->address = $data['address'];
+        // optional only admin can add
+        $this->contact->sick_leave = $data['sick_leave'];
+        $this->contact->child_sick_leave = $data['child_sick_leave'];
+        $this->contact->emergency_leave = $data['emergency_leave'];
+        $this->contact->salary = $data['salary'];
+        $this->contact->is_admin = $data['is_admin'];
 
         return $this->contact->create();
     }
@@ -43,7 +50,14 @@ class ContactController extends Base {
         $this->contact->password = $data['password'];
         $this->contact->phone = $data['phone'];
         $this->contact->department = $data['department'];
+        $this->contact->job_type = $data['job_type'];
         $this->contact->address = $data['address'];
+        // optional only admin can edit
+        $this->contact->sick_leave = $data['sick_leave'];
+        $this->contact->child_sick_leave = $data['child_sick_leave'];
+        $this->contact->emergency_leave = $data['emergency_leave'];
+        $this->contact->salary = $data['salary'];
+        $this->contact->is_admin = $data['is_admin'];
 
         return $this->contact->update();
     }
@@ -70,7 +84,7 @@ class ContactController extends Base {
             header('Location: index.php');
         }
         else {
-            echo "User doesn't exists.";
+            echo "Username or Password is wrong.";
         }
     }
 }
