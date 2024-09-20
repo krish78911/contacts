@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    echo "session not exists";
+} else {
+    echo "session exists";
+}
 if(!isset($_SESSION)) 
 { 
     session_start(); 
