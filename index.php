@@ -1,5 +1,5 @@
 <?php 
-
-header('Location: public/index.php');
+echo "testtttt";
+//header('Location: public/index.php');
 
 ?>
