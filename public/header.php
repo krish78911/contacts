@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 require_once '../config/database.php';
 require_once '../src/ContactController.php';
 
@@ -27,10 +31,6 @@ $totalPages = ceil($totalContacts / $limit);
 </head>
 <body>
     <?php
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        }
         $isAdmin = false;
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true) {
             $isAdmin = true;
