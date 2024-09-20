@@ -1,5 +1,5 @@
 <?php 
 
-header('Location: public/index.phppp'); 
+header('Location: public/index.php'); 
 
 ?>
