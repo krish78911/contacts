@@ -1,13 +1,15 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+
 if (session_status() == PHP_SESSION_NONE) {
     echo "session not exists";
 } else {
     echo "session exists";
 }
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-}
+
 require_once '../config/database.php';
 require_once '../src/ContactController.php';
 
