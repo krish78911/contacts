@@ -13,15 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include 'nav.php'; ?>
 <div class="container mt-4 mb-4 shadow-sm p-3 mb-5 bg-white rounded">
     <h2>Contact Us</h2>
-    <form method="POST" id="contactForm">
-
+    <form method="POST" id="contactForm" class="contactAlll">
         <div class="mb-3">
-            <label for="name" class="form-label">Sender Id</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $userId; ?>" required>
+            <label for="email_type" class="form-label">Email Form Type</label>
+            <input type="text" class="form-control" id="email_type" name="email_type" value="contactAllType" required>
         </div>
         <div class="mb-3">
-            <label for="name" class="form-label">Sender Id</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $userId; ?>" required>
+            <label for="sender_id" class="form-label">Sender Id</label>
+            <input type="text" class="form-control" id="sender_id" name="sender_id" value="<?php echo $userId; ?>" required>
         </div>
         <div class="mb-3">
             <label for="subject" class="form-label">Subject</label>
@@ -33,5 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn btn-primary w-100">Send Message</button>
     </form>
+
+    <div class="successMessage text-success"></div>
+    <div class="errorMessage text-dangerr"></div>
 </div>
 <?php include 'footer.php'; ?>

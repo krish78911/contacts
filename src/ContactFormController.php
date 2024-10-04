@@ -10,6 +10,14 @@ class ContactFormController
     // Constructor to initialize the form fields
     public function __construct($data)
     {
+        $this->emailType = isset($data['emailType']) ? $this->sanitize($data['emailType']) : '';
+        if($this->emailType == 'contactUsPage') {
+            // TODO
+        } elseif($this->emailType == 'contactAllPage') {
+            // TODO
+        } elseif($this->emailType == 'contactUserPage') {
+            // TODO
+        }
         $this->name = isset($data['name']) ? $this->sanitize($data['name']) : '';
         $this->email = isset($data['email']) ? $this->sanitize($data['email']) : '';
         $this->subject = isset($data['subject']) ? $this->sanitize($data['subject']) : '';

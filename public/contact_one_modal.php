@@ -7,7 +7,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form method="POST" id="contactForm">
+            <form method="POST" id="contactForm" class="userContactForm">
+                <div class="mb-3 d-none">
+                    <label for="email_type" class="form-label">Email Form Type</label>
+                    <input type="text" class="form-control" id="email_type" name="email_type" value="contactOneType" required>
+                </div>
                 <div class="mb-3 d-none">
                     <label for="receiver_id" class="form-label">Receiver Id</label>
                     <input type="text" class="form-control" id="receiver_id" name="receiver_id" 
@@ -27,6 +31,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
+
+            <div class="successMessage text-success"></div>
+            <div class="errorMessage text-dangerr"></div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

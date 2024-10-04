@@ -4,12 +4,6 @@ if(!isset($_SESSION))
     session_start(); 
 }
 
-if (session_status() == PHP_SESSION_NONE) {
-    echo "session not exists";
-} else {
-    echo "session exists";
-}
-
 require_once '../config/database.php';
 require_once '../src/ContactController.php';
 
@@ -35,6 +29,7 @@ $totalPages = ceil($totalContacts / $limit);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/style.css" rel="stylesheet">
+    <script src="../assets/ajaxFormSubmit.js"></script>
 </head>
 <body>
     <?php

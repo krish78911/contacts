@@ -1,0 +1,4 @@
+private $host = 'localhost';
+    private $db_name = 'mywebios_address_book_db';
+    private $username = 'mywebios_krishna';
+    private $password = 'KrishnaSingh123@@';

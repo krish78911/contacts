@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card shadow-lg p-4" style="width: 400px;">
                     <h3 class="text-center mb-4">Contact Us</h3>
                     <form method="POST" id="contactForm">
+                        <div class="mb-3 d-none">
+                            <label for="email_type" class="form-label">Email Form Type</label>
+                            <input type="text" class="form-control" id="email_type" name="email_type" value="contactFormType" required>
+                        </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
